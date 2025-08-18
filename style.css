@@ -1,0 +1,459 @@
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #0a0a0a;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 星空背景 */
+.starry-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    background: #ffffff;
+    border-radius: 50%;
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+.star:nth-child(1) { left: 10%; top: 20%; width: 2px; height: 2px; animation-delay: 0s; }
+.star:nth-child(2) { left: 20%; top: 15%; width: 1px; height: 1px; animation-delay: 0.5s; }
+.star:nth-child(3) { left: 30%; top: 25%; width: 3px; height: 3px; animation-delay: 1s; }
+.star:nth-child(4) { left: 40%; top: 10%; width: 2px; height: 2px; animation-delay: 1.5s; }
+.star:nth-child(5) { left: 50%; top: 30%; width: 1px; height: 1px; animation-delay: 2s; }
+.star:nth-child(6) { left: 60%; top: 5%; width: 2px; height: 2px; animation-delay: 2.5s; }
+.star:nth-child(7) { left: 70%; top: 35%; width: 1px; height: 1px; animation-delay: 3s; }
+.star:nth-child(8) { left: 80%; top: 20%; width: 3px; height: 3px; animation-delay: 0.3s; }
+.star:nth-child(9) { left: 90%; top: 15%; width: 2px; height: 2px; animation-delay: 0.8s; }
+.star:nth-child(10) { left: 15%; top: 40%; width: 1px; height: 1px; animation-delay: 1.3s; }
+.star:nth-child(11) { left: 25%; top: 50%; width: 2px; height: 2px; animation-delay: 1.8s; }
+.star:nth-child(12) { left: 35%; top: 45%; width: 3px; height: 3px; animation-delay: 2.3s; }
+.star:nth-child(13) { left: 45%; top: 60%; width: 1px; height: 1px; animation-delay: 0.7s; }
+.star:nth-child(14) { left: 55%; top: 55%; width: 2px; height: 2px; animation-delay: 1.2s; }
+.star:nth-child(15) { left: 65%; top: 70%; width: 1px; height: 1px; animation-delay: 1.7s; }
+.star:nth-child(16) { left: 75%; top: 65%; width: 3px; height: 3px; animation-delay: 2.2s; }
+.star:nth-child(17) { left: 85%; top: 75%; width: 2px; height: 2px; animation-delay: 0.4s; }
+.star:nth-child(18) { left: 95%; top: 80%; width: 1px; height: 1px; animation-delay: 0.9s; }
+.star:nth-child(19) { left: 5%; top: 85%; width: 2px; height: 2px; animation-delay: 1.4s; }
+.star:nth-child(20) { left: 85%; top: 90%; width: 3px; height: 3px; animation-delay: 1.9s; }
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px;
+}
+
+/* 背景动画 */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.fireworks-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.firework {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: firework-launch 2s ease-out forwards;
+}
+
+.firework-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: firework-explode 1.2s ease-out forwards;
+}
+
+@keyframes firework-launch {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(80vh) scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(20vh) scale(1);
+    }
+    100% {
+        transform: translateY(0vh) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes firework-explode {
+    0% {
+        transform: translate(0, 0) scale(0);
+        opacity: 0;
+    }
+    20% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x), var(--y)) scale(0);
+        opacity: 0;
+    }
+}
+
+/* 主要内容 */
+.main-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 400px;
+}
+
+.birthday-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 蛋糕动画 */
+.cake-container {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.cake {
+    position: relative;
+    width: 120px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.cake-layer {
+    position: absolute;
+    border-radius: 50%;
+    animation: cakeBounce 2s ease-in-out infinite;
+}
+
+.cake-bottom {
+    width: 100px;
+    height: 30px;
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+    bottom: 0;
+    left: 10px;
+    animation-delay: 0s;
+}
+
+.cake-middle {
+    width: 80px;
+    height: 25px;
+    background: linear-gradient(45deg, #4ecdc4, #44a08d);
+    bottom: 30px;
+    left: 20px;
+    animation-delay: 0.2s;
+}
+
+.cake-top {
+    width: 60px;
+    height: 20px;
+    background: linear-gradient(45deg, #ffe66d, #ffd93d);
+    bottom: 55px;
+    left: 30px;
+    animation-delay: 0.4s;
+}
+
+.candle {
+    position: absolute;
+    bottom: 75px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 25px;
+}
+
+.candle-body {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #fff, #f0f0f0);
+    border-radius: 4px;
+    position: relative;
+}
+
+.candle-body::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: #ff6b6b;
+    border-radius: 50%;
+    animation: flicker 1s ease-in-out infinite alternate;
+}
+
+.flame {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 12px solid #ffd700;
+    animation: flame 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes cakeBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes flicker {
+    0% { opacity: 0.8; transform: translateX(-50%) scale(1); }
+    100% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+}
+
+@keyframes flame {
+    0% { transform: translateX(-50%) scale(1) rotate(-2deg); }
+    100% { transform: translateX(-50%) scale(1.1) rotate(2deg); }
+}
+
+
+
+/* 生日祝福文字 */
+.birthday-message {
+    margin-bottom: 20px;
+}
+
+.message-text {
+    font-size: 1rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.message-text:first-child {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffd700;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+    margin-bottom: 15px;
+}
+
+.message-text:nth-child(1) { animation-delay: 0.3s; }
+.message-text:nth-child(2) { animation-delay: 0.6s; }
+.message-text:nth-child(3) { animation-delay: 0.9s; }
+.message-text:nth-child(4) { animation-delay: 1.2s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/* 音乐控制按钮 */
+.music-control {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 10;
+}
+
+.music-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 1);
+}
+
+.music-btn.playing {
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .birthday-card {
+        padding: 25px 15px;
+        border-radius: 15px;
+    }
+    
+    .birthday-title {
+        font-size: 2rem;
+        gap: 3px;
+    }
+    
+    .cake {
+        width: 100px;
+        height: 80px;
+    }
+    
+    .cake-bottom {
+        width: 80px;
+        height: 25px;
+    }
+    
+    .cake-middle {
+        width: 65px;
+        height: 20px;
+    }
+    
+    .cake-top {
+        width: 50px;
+        height: 15px;
+    }
+    
+    .candle {
+        bottom: 60px;
+    }
+    
+    .music-control {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .music-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .firework {
+        width: 6px;
+        height: 6px;
+    }
+    
+    .firework-particle {
+        width: 4px;
+        height: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .birthday-title {
+        font-size: 1.8rem;
+    }
+    
+    .message-text {
+        font-size: 0.9rem;
+    }
+    
+    .cake {
+        width: 80px;
+        height: 65px;
+    }
+    
+    .cake-bottom {
+        width: 65px;
+        height: 20px;
+    }
+    
+    .cake-middle {
+        width: 50px;
+        height: 15px;
+    }
+    
+    .cake-top {
+        width: 40px;
+        height: 12px;
+    }
+    
+    .candle {
+        bottom: 45px;
+    }
+}
+
+/* 触摸优化 */
+@media (hover: none) and (pointer: coarse) {
+    .music-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .birthday-card {
+        touch-action: manipulation;
+    }
+} 
